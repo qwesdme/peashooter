@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "peashooter"
+version = "0.1.0"
+description = "An automated test file generator for use with pytest"
+authors = ["qwesdme <qwesdme@gmail.com>"]
+readme = "README.md"
+packages = [{include = "peashooter"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pytest = "^7.4.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
