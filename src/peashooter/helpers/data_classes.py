@@ -44,7 +44,7 @@ class Class:
         self.fixture_name: str = self._fixture_name()
 
     def _fixture_name(self) -> str:
-        return re.sub(r'(?<!^)(?=[A-Z])', '_', self.name).lower() + "_fixture"
+        return re.sub(r'(?<=[a-z])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])', '_', self.name).lower() + "_fixture"
 
     def test_class_def(self) -> str:
         return f"class Test{self.name}:\n"
