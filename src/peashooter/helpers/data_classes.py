@@ -21,7 +21,7 @@ class Function:
         if has_args:
             param_names = ", ".join([param.name for param in self.params])
             pytest_file.write(
-                f"@pytest.mark.parametrize('{param_names}', [])  # add parameter values\n"
+                f"@pytest.mark.parametrize(\"{param_names}\", [])  # add parameter values\n"
                 f"def test_{self.name}({param_names}):\n"
             )
         else:
@@ -44,7 +44,7 @@ class Class:
         self.fixture_name: str = self._fixture_name()
 
     def _fixture_name(self) -> str:
-        return re.sub(r'(?<=[a-z])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])', '_', self.name).lower() + "_fixture"
+        return re.sub(r"(?<=[a-z])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])", '_', self.name).lower() + "_fixture"
 
     def test_class_def(self) -> str:
         return f"class Test{self.name}:\n"
@@ -86,7 +86,7 @@ class Class:
             if has_args:
                 param_names = ", ".join([param.name for param in method.params])
                 pytest_file.write(
-                    f"    @pytest.mark.parametrize('{param_names}', [])  # add parameter values\n"
+                    f"    @pytest.mark.parametrize(\"{param_names}\", [])  # add parameter values\n"
                     f"    def test_{method.name}(self, {self.fixture_name}, {param_names}):\n"
                 )
             else:
